@@ -98,7 +98,7 @@ app.post('/forms', function(req, res){
 //Setting up server
 app.use('/', express.static(__dirname + '/client')); // ← adjust
 
-server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
+server.listen(3000, "0.0.0.0", function(){
   var addr = server.address();
   console.log("Server listening at", addr.address + ":" + addr.port);
 });
