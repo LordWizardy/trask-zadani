@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "version": "i",
+    "id": 1,
+    "email": "i",
+    "firstName": "i",
+    "lastName": "i",
+    "company": "i",
+    "position": "i",
+    "source": "i"
+}, 

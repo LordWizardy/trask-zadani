@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JSON Schema form</h2>
+
+<form id="test" action="https://trask-test-zadani-lordwizardy.c9users.io:8080/myaction" method="post">
+
+
+</form>
+
+<pre id="output">
+
+</pre>
+
+<form action="https://trask-test-zadani-lordwizardy.c9users.io:8080/forms" method="post">
+	<input type="submit" value="Show submitted forms"/>
+</form>
+
+<pre id="formulare">
+
+</pre>
+
+<script>
+
+var url = "https://trask-test-zadani-lordwizardy.c9users.io:8080/myaction";
+var xmlhttp = new XMLHttpRequest();
+var x = "";
+
+var idNum = 0;
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var testObj = JSON.parse(this.responseText);
+        
+        //hidden data
+        document.getElementById("test").innerHTML = '<input type="hidden" name="$schema" value="' + testObj.$schema + '">';
+        
+        for (x in testObj.properties) {
+          var requ = testObj.required;
+          if (requ.includes(x)) {
+            requ = "required";
+          }
+          document.getElementById("test").innerHTML += testObj.properties[x].description + ":" + "<br>" + '<input type="' + testObj.properties[x].type + '" name="' + x + '" ' + requ + '><br>';
+        }
+        
+        //hidden data
+        document.getElementById("test").innerHTML += '<input type="hidden" name="id" value="' + 0 + '">';
+        
+        for (x in testObj.definitions.TraskTest1.properties) {
+          var reqr = testObj.definitions.TraskTest1.required;
+          if (reqr.includes(x)) {
+            reqr = "required";
+          }
+          
+          document.getElementById("test").innerHTML += testObj.definitions.TraskTest1.properties[x].description + ":" + "<br>" + '<input type="' + testObj.definitions.TraskTest1.properties[x].type + '" name="' + x + '" ' + reqr + '><br>';
+        }
+        
+        document.getElementById("test").insertAdjacentHTML('beforeend', '<br><input type="submit" value="Submit form"/>');
+        
+    }
+};
+xmlhttp.open("GET", "js/trasktest1.json", true);
+xmlhttp.send();
+
+
+
+</script>
+
+</body>
+</html>
