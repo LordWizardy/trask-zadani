@@ -7,14 +7,11 @@ var fs = require("fs");
 
 var idNum = 0;
 
-// Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
 
-// Process application/json
 app.use(bodyParser.json());
 
 app.post('/myAction', function(req, res){  
-//now req.body will be populated with the object you sent
 
   idNum += 1;
   
@@ -61,13 +58,13 @@ app.post('/myAction', function(req, res){
     }
   });
 
-  res.send('<html><body><h1>Formulář odeslán</h1><br><form><input type="button" value="Back home" onclick="window.location.href=\'https://trask-test-zadani-lordwizardy.c9users.io/index.html\'" /></form></body></html>');
+  res.send('<html><body><h1>Form sent</h1><br><form><input type="button" value="Back home" onclick="window.location.href=\'https://localhost/index.html\'" /></form></body></html>');
 
 });
 
 
 
-//Zobrazování formulářů
+//Print forms
 
 var formsCont = "";
 
