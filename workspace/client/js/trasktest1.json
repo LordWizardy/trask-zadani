@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "id": "https://traskweb.azurewebsites.net/trasktest1.json",
+    "id": "./client/js/trasktest1.json",
     "type": "object",
     "title": "Trask Test 1 Schema",
     "additionalProperties": true,
@@ -27,6 +27,7 @@
                 "email": {
                     "type": "string",
                     "title": "Email address",
+                    "format": "email",
                     "description": "Your email adress"
                 },
                 "firstName": {
