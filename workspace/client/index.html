@@ -4,18 +4,26 @@
 
 <h2>JSON Schema form</h2>
 
-<form id="test" action="https://localhost:3000/myaction" method="post">
+<form id="test" action="https://trask-test-zadani-lordwizardy.c9users.io:8080/myaction" method="post">
 
 
 </form>
 
-<form action="https://localhost:3000/forms" method="post">
+<pre id="output">
+
+</pre>
+
+<form action="https://trask-test-zadani-lordwizardy.c9users.io:8080/forms" method="post">
 	<input type="submit" value="Show submitted forms"/>
 </form>
 
+<pre id="formulare">
+
+</pre>
+
 <script>
 
-var url = "https://localhost:3000/myaction";
+var url = "https://trask-test-zadani-lordwizardy.c9users.io:8080/myaction";
 var xmlhttp = new XMLHttpRequest();
 var x = "";
 
@@ -26,15 +34,19 @@ xmlhttp.onreadystatechange = function() {
         var testObj = JSON.parse(this.responseText);
         
         //hidden data
-        document.getElementById("test").innerHTML = '<input type="hidden" name="$schema" value="' + testObj.$schema + '">';
+        document.getElementById("test").innerHTML = '<input type="hidden" name="$schema" value="./client/js/trasktest1.json">';
+        document.getElementById("test").innerHTML += '<input type="hidden" name="version" value="0.1">';
         
+        
+        /*
         for (x in testObj.properties) {
           var requ = testObj.required;
           if (requ.includes(x)) {
             requ = "required";
           }
-          document.getElementById("test").innerHTML += testObj.properties[x].description + ":" + "<br>" + '<input type="' + testObj.properties[x].type + '" name="' + x + '" ' + requ + '><br>';
+          document.getElementById("test").innerHTML += testObj.properties[x].description + ":" + "<br>" + '<input type="' + testObj.properties[x].type + '" name="' + x + '"><br>';
         }
+        */
         
         //hidden data
         document.getElementById("test").innerHTML += '<input type="hidden" name="id" value="' + 0 + '">';
